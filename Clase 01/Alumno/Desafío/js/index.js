@@ -6,7 +6,16 @@ var parsedNumero1 = parseInt(numero1, 10)
 var numero2 = prompt('Ingrese otro número')
 var parsedNumero2 = parseInt(numero2, 10)
 
-console.log('Suma: ' + parsedNumero1 + '+' + parsedNumero2 + ' =', parsedNumero1 + parsedNumero2)
-console.log('Resta: ' + parsedNumero1 + '-' + parsedNumero2 + ' =', parsedNumero1 - parsedNumero2)
-console.log('Multiplicación: ' + parsedNumero1 + '*' + parsedNumero2 + ' =', parsedNumero1 * parsedNumero2)
-console.log('División: ' + parsedNumero1 + '/' + parsedNumero2 + ' =', parsedNumero1 / parsedNumero2)
+if (isNaN(parsedNumero1) || isNaN(parsedNumero2)) {
+    console.log('Valor inválido')
+} else {
+    console.log('Suma: ' + parsedNumero1 + '+' + parsedNumero2 + ' =', parsedNumero1 + parsedNumero2)
+    console.log('Resta: ' + parsedNumero1 + '-' + parsedNumero2 + ' =', parsedNumero1 - parsedNumero2)
+    console.log('Multiplicación: ' + parsedNumero1 + '*' + parsedNumero2 + ' =', parsedNumero1 * parsedNumero2)
+    if (parsedNumero2 === 0) {
+        console.log('No se puede dividir por cero')
+    } else {
+        console.log('División: ' + parsedNumero1 + '/' + parsedNumero2 + ' =', parsedNumero1 / parsedNumero2)
+    }
+}
+
