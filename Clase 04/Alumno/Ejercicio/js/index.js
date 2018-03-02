@@ -18,8 +18,8 @@ function promediarNotas(examResults) {
     var total = 0
     for (var i = 0; i < examResults.length; i++) {
         total = total + examResults[i]
-        // Una forma abreviada: 'suma += examResults[i]'
-        //console.log('La suma de todos los números es: ' + suma)
+        // Una forma abreviada: 'total += examResults[i]'
+        //console.log('La suma de todos los números es: ' + total)
     }
     return total / cantidadNumeros
 }
