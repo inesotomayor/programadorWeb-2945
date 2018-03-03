@@ -4,7 +4,7 @@
 - IndexOf
 - ToLowerCase
 - ToUpperCase
-- Concat
+- Includes
 - Split
 
 # Métodos de arrays
@@ -12,7 +12,7 @@
 - ToString
 - Push
 - Join
-- Slice
+- Splice
 - Sort
 - Reverse
 - Pop
