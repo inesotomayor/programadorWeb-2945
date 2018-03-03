@@ -112,16 +112,12 @@ function calcular(numero3, numero4) {
             case 'Division':
             case 'división':
             case 'division':
-                if (numero4 === 0) {
-                    do {
-                        console.log('Ingrese un número mayor a 0')
-                        numero4 = pedirNumeroYParsear()
-                    } while (numero4 === 0)
-                }
-                if (numero4 !== 0) {
-                    division = dividir(numero3, numero4)
-                    console.log(numero3 + ' / ' + numero4 + ' = ' + division)
-                }
+                do {
+                    console.log('Ingrese un número mayor a 0')
+                    numero4 = pedirNumeroYParsear()
+                } while (numero4 === 0)
+                division = dividir(numero3, numero4)
+                console.log(numero3 + ' / ' + numero4 + ' = ' + division)
                 break
             default:
                 console.log('Operación no válida')

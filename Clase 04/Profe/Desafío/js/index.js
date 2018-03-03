@@ -77,16 +77,29 @@ var students = [
 ]
 
 var name = prompt('Ingresa')
-searchStudentByName(name)
+searchStudentByNameAndLastName(name)
+// searchStudentAverageResult(3)
+// searchStudentAverageResult(10)
+// searchStudentAverageResult(0)
 // searchStudentByName('Pablo')
 // searchStudentByName('PEPE')
 
-function searchStudentByName (studentName) {
+function searchStudentByNameAndLastName (text) {
   for (var i = 0; i < students.length; i++) {
     var student = students[i]
-    if (student.firstName === studentName) {
+    if (student.firstName === text || student.lastName === text) {
       showStudentDetail(student)
       break
+    }
+  }
+}
+
+function searchStudentAverageResult (averageResult) {
+  for (var i = 0; i < students.length; i++) {
+    var student = students[i]
+    var studentAverageResult = averageExamResult(student.examResults)
+    if (studentAverageResult >= averageResult) {
+      showStudentDetail(student)
     }
   }
 }
@@ -100,7 +113,12 @@ function showStudentDetail (student) {
 
   var street = student.address && student.address.street
   var streetNumber = student.address && student.address.number
-  var address = ', Dirección: ' + street + ' ' + streetNumber
+
+  if (street && streetNumber) {
+    var address = ', Dirección: ' + street + ' ' + streetNumber
+  } else {
+    var address = ''
+  }
 
   console.log(fullName + averageResult + dni + address)
 }
