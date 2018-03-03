@@ -88,12 +88,19 @@ function promediarNotas(examResults) {
 // Mostrar datos alumnos
 
 function mostrarDetalleAlumno(alumno) {
-    var street = alumno.address && alumno.address.street
-    var streetNumber = alumno.address && alumno.address.number
     var fullName = alumno.firstName + ' ' + alumno.lastName
-    var address = 'Dirección: ' + street + ' ' + streetNumber
     var dni = 'DNI: ' + alumno.dni
     var promedioStudent = 'Promedio: ' + promediarNotas(alumno.examResults)
+
+    var street = alumno.address && alumno.address.street
+    var streetNumber = alumno.address && alumno.address.number
+    var address
+    if (street && streetNumber) {
+        address = 'Dirección: ' + street + ' ' + streetNumber
+    } else {
+        address= ''
+    }
+
     console.log(fullName + ' / ' + dni + ' / ' + address + ' / ' + promedioStudent)
 }
 
@@ -113,20 +120,21 @@ function separarPromediosMayores() {
 var promedioIngresado = prompt('Ingresá un promedio:')
 promedioIngresado = verificarNumero()
 
-if (promedioIngresado !== false) {
-    console.log('Promedios mayores a ' + promedioIngresado + ':')
-
-    function buscarPromedioIgualMayor(promedioIngresado) {
+if (promedioIngresado) {
+        function buscarPromedioIgualMayor(promedioIngresado) {
+        var flag = false
         for (var i = 0; i < alumnos.length; i++) {
             var alumno = alumnos[i]
             var promedio = promediarNotas(alumno.examResults)
-
             if (promedio >= promedioIngresado) {
+                flag = true
                 mostrarDetalleAlumno(alumno)
-                // break
-            }  else {
-                console.log('No hay ningún promedio igual o mayor a ' + promedioIngresado)
+                //break
             }
+        }
+        // Si recorrió, no encontró el flag = true, entonces el flag = false
+        if (!flag)  {
+            console.log('No hay ningún promedio igual o mayor a ' + promedioIngresado)
         }
     }
 
@@ -148,14 +156,18 @@ var name = prompt('Ingresá el nombre o apellido de alumno:')
 buscarAlumnoPorNombreOApellido(name)
 
 function buscarAlumnoPorNombreOApellido(nombreIngresado) {
+    var flag = false
     for (var i = 0; i < alumnos.length; i++) {
         var alumno = alumnos[i]
         if (nombreIngresado === alumno.firstName || nombreIngresado === alumno.lastName) {
+            flag = true
             mostrarDetalleAlumno(alumno)
-            // break
-        } else {
-            console.log('No hay ningún alumno con nombre o apellido ' + nombreIngresado)
+            //break
         }
+    }
+    // Si recorrió, no encontró el flag = true, entonces el flag = false
+    if (!flag)  {
+        console.log('No hay ningún alumno con nombre o apellido ' + nombreIngresado)
     }
 }
 
