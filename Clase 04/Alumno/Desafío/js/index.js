@@ -156,17 +156,17 @@ var name = prompt('Ingresá el nombre o apellido de alumno:')
 buscarAlumnoPorNombreOApellido(name)
 
 function buscarAlumnoPorNombreOApellido(nombreIngresado) {
-    var flag = false
+    var flag = true
     for (var i = 0; i < alumnos.length; i++) {
         var alumno = alumnos[i]
         if (nombreIngresado === alumno.firstName || nombreIngresado === alumno.lastName) {
-            flag = true
+            flag = false
             mostrarDetalleAlumno(alumno)
             //break
         }
     }
-    // Si recorrió, no encontró el flag = true, entonces el flag = false
-    if (!flag)  {
+    // Si recorrió y el flag siguió en true (no se cumplió el requisito)
+    if (flag)  {
         console.log('No hay ningún alumno con nombre o apellido ' + nombreIngresado)
     }
 }
