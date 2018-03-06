@@ -125,32 +125,74 @@ function addStudent () {
 // - La función debe recibir como parámetro un nombre, buscarlo y eliminarlo del array.
 // - La función no debe distinguir mayúsculas de minúsculas.
 
-function deleteStudent (studentName) {
-    // studentName = prompt('Ingrese un nombre para eliminar del array')
-    // var index = searchStudentByName(studentName)
-    // if (index !== -1) {
-    //     studentsList.splice(index, 1)
-    //     console.log('Se eliminó el nombre que contiene: ' + studentName)
-    // }
+
+function deleteOneStudent () {
+
+    // Eliminar el primer nombre que encuentre:
+
     var index = -1
-    var studentName = prompt('Ingresar un nombre (o parte del mismo) para eliminarlo del listado')
+    var studentName = prompt('Ingrese un nombre (o parte del mismo) para eliminarlo del listado')
     var index = searchStudentByName(studentName)
 
-    var flag = true
-
-    for (var i = 0; i < studentsList.length; i++) {
-        if (index !== -1) {
-            studentsList.splice(index, 1)
-            console.log('Se eliminaron los alumnos cuyo nombre contiene: "' + studentName + '"')
-            flag = false
-            // PREGUNTA: ¿Cómo hago para listar en console.log todos los nombres que se eliminaron?
-        }
+    if (index !== -1) {
+        studentsList.splice(index, 1)
+        console.log('Se eliminó el primer alumno cuyo nombre contiene: "' + studentName + '"')
+    } else {
+        console.log('No se encontró ningún alumno con: "' + studentName + '"')
     }
-    if (flag) {
-        console.log('No hay nombres que contengan el término "' + studentName + '"')
-    }
-    return index
 }
+// deleteOneStudent()
+// console.log(studentsList)
+
+// function deleteAllStudents () {
+//     var studentName = prompt('Ingrese un nombre (o parte del mismo) para eliminarlos del listado')
+//
+//     var deletedAStudents = []
+//
+//     for (var i = 0; i < studentsList.length; i++) {
+//         var student = studentsList[i]
+//
+//         if (student.indexOf(studentName) !== -1) {
+//
+//             deletedAStudents.push(student)
+//
+//             studentsList.splice(i, 1)
+//             console.log('Se eliminaron los alumnos cuyo nombre contienen: "' + studentName + '"')
+//             i--
+//         } else {
+//             console.log('No hay nombres que contengan el término "' + studentName + '"')
+//         }
+//     }
+//     for (var i = 0; i < deletedAStudents.length; i++) {
+//         console.log('Los estudiantes eliminados son: ', deletedAStudents[i])
+//     }
+// }
+// deleteAllStudents()
+// console.log(studentsList)
+
+
+// function deleteStudent () {
+
+    // Código fallido para borrar todos lo nombres que encuentre:
+
+    // var studentName = prompt('Ingresar un nombre (o parte del mismo) para eliminarlo del listado')
+    // var index = searchStudentByName(studentName)
+    //
+    // var flag = true
+    //
+    // for (var i = 0; i < studentsList.length; i++) {
+    //     if (index !== -1) {
+    //         studentsList.splice(index, 1)
+    //         console.log('Se eliminaron los alumnos cuyo nombre contienen: "' + studentName + '"')
+    //         flag = false
+    //         // PREGUNTA: ¿Cómo hago para listar en console.log todos los nombres que se eliminaron?
+    //     }
+    // }
+    // if (flag) {
+    //     console.log('No hay nombres que contengan el término "' + studentName + '"')
+    // }
+    // return index
+// }
 // deleteStudent()
 // console.log(studentsList)
 
@@ -161,37 +203,35 @@ function deleteStudent (studentName) {
 
 // - Las opciones pueden ser buscar, agregar o eliminar y tienen que pedir los datos que correspondan y usar las funciones anteriores para hacer los cambios.
 
-function manageStudents () {
+function manageStudents (isSecondCall) {
 
-    var flag = true
+    var message
+    if (!isSecondCall) {
+        message = 'Ingrese una opción: buscar, agregar o eliminar'
+    } else {
+        message = 'Opción inválida, use: buscar, agregar o eliminar'
+    }
 
-    do {
-        var selectedOption = prompt('Ingrese una opción: buscar, agregar o eliminar')
-        var selectedOptionUppercase = changeToUppercase(selectedOption)
+    var selectedOption = prompt(message)
+    var selectedOptionUppercase = changeToUppercase(selectedOption)
 
-        if (selectedOptionUppercase === 'BUSCAR' || selectedOptionUppercase === 'AGREGAR' || selectedOptionUppercase === 'ELIMINAR') {
-            switch (selectedOptionUppercase) {
-                case 'BUSCAR':
-                    searchStudentByNameandList()
-                    break
-                case 'AGREGAR':
-                    addStudent()
-                    console.log('Array actualizado: ', studentsList)
-                    break
-                case 'ELIMINAR':
-                    deleteStudent()
-                    console.log('Array actualizado: ', studentsList)
-                    break
-                default:
-                    console.log('Opción inválida')
-            }
-            flag = false
-        } else {
+    switch (selectedOptionUppercase) {
+        case 'BUSCAR':
+            searchStudentByNameandList()
+            break
+        case 'AGREGAR':
+            addStudent()
+            console.log('Array actualizado: ', studentsList)
+            break
+        case 'ELIMINAR':
+            deleteOneStudent()
+            console.log('Array actualizado: ', studentsList)
+            break
+        default:
             console.log('Elija una opción válida')
-            // PREGUNTA: ¿Cómo hago para hacer un prompt de un mensaje diferente al inicial acá y que lo vuelva a validar? Ejemplo:
-            // var selectAValidOption = prompt('Ingrese una opción válida: buscar, agregar o eliminar')
-        }
-    } while (flag)
+            manageStudents(true)
+            break
+    }
 }
 
 manageStudents()
