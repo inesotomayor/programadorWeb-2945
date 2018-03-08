@@ -4,32 +4,44 @@
 // Agregar dos actores por película.
 
 
-function Pelicula (titulo, ano, director, actores) {
-    var id = Math.random()
-    this.showFullName = function () {
-        console.log('Nombre completo: ' + firstName + ' ' + lastName)
-    }
-    this.isLegalAge = function () {
-        if (age >= mayoriaEdad) {
-            // return !!(age >= mayoriaEdad)  ------> manera más profesional =)
-            return true
-        } else {
-            return false
-        }
-    }
+var pelicula = new Pelicula('Casablanca', '1942', 'Michael Curtiz', [])
 
-    // Info extra (no la pide el enunciado)
+function Pelicula (titulo, ano, director, actores) {
+
+    var id = Math.random ()
     this.id = id
     this.titulo = titulo
     this.ano = ano
-    //this.actores = {}
+    this.director = director
+    this.actores = actores
+    actores.push('Humphrey Bogart')
+    actores.push('Ingrid Bergman')
 }
 
-var nuevaPelicula = new Pelicula('Roberto', 'Gómez', 56, 'San Luis 4500')
-nuevaPelicula.showFullName()
 console.log (
-    'ID: ' + nuevoUsuario.id + ', ',
-    'Address: ' + nuevoUsuario.address + ', ',
-    'Edad: ' + nuevoUsuario.age + ', ',
-    'Mayor de edad?: ' + nuevoUsuario.isLegalAge()
+    'ID: ' + pelicula.id + ' /',
+    'Título: ' + pelicula.titulo + ' /',
+    'Año: ' + pelicula.ano + ' /',
+    'Director: ' + pelicula.director + ' /',
+    'Actores: ' + pelicula.actores.join(' & ')
 )
+
+
+
+// Get y Set (?)
+
+// var obj = {
+//     a: 7,
+//     get b() {
+//         return this.a + 1;
+//     },
+//     set c(x) {
+//         this.a = x / 2;
+//     }
+// };
+//
+// console.log(obj.a) // 7
+// console.log(obj.b) // 8
+// obj.c = 80;
+// console.log(obj.a) // 25
+
