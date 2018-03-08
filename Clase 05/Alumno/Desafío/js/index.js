@@ -28,20 +28,42 @@ console.log (
 
 
 
-// Get y Set (?)
+
+
+
+// [ ---- Get y Set ----]
 
 // var obj = {
-//     a: 7,
-//     get b() {
-//         return this.a + 1;
+//     A: 7,
+//     get B() {
+//         return this.A + 1;
 //     },
-//     set c(x) {
-//         this.a = x / 2;
+//     set C(x) {
+//         this.A = x / 2;
 //     }
 // };
 //
-// console.log(obj.a) // 7
-// console.log(obj.b) // 8
-// obj.c = 80;
-// console.log(obj.a) // 25
+// console.log(obj.A) // 7
+// console.log(obj.B) // 8
+// obj.C = 90;
+// console.log(obj.A) // 45
+
+
+
+
+
+
+// [ ---- Set ----]
+//
+// var obj = {
+//     set value(x) {
+//         this.array.push(x);
+//     },
+//     array: []
+// }
+// obj.value ='Value #1';
+// console.log(obj.array) //['Value #1']
+//
+// obj.value ='Value #2';
+// console.log(obj.array) //['Value #1', 'Value #2']
 
