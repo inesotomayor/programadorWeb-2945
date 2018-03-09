@@ -28,6 +28,8 @@ function searchStudentByName (studentName) {
     var index = -1
     var studentUpperCase = changeToUppercase(studentName)
 
+    var foundStudents = []
+
     var flag = true
 
     for (var i = 0; i < objectList.length; i++) {
@@ -38,13 +40,16 @@ function searchStudentByName (studentName) {
             flag = false
             index = i
             console.log('Se encontró el registro: ' + '[' + i + ']' + ' / ' + fullName)
+
+            foundStudents.push(index)
         }
     }
     if (flag) {
         console.log('No hay nombres que contengan "' + studentName + '"')
     }
-    return index
+    return foundStudents
 }
+
 
 
 // Búsqueda + console.log de los resultados:
@@ -126,16 +131,16 @@ function deleteOneStudent () {
     var index = -1
     var studentName = prompt('Ingrese un nombre (o parte del mismo) para eliminarlo del listado')
     var index = searchStudentByName(studentName)
+    var primerIndex = index[0]
 
     if (index !== -1) {
-
-        objectList.splice(index, 1)
+        console.log('Array de todos los index encontrados: ' + index)
+        console.log('Primer index encontrado, a eliminar: ' + primerIndex)
+        objectList.splice(primerIndex, 1)
         console.log('Se eliminó el primer registro que contiene: "' + studentName + '"')
     } else {
         console.log('No se encontró ningún alumno con: "' + studentName + '"')
     }
-    console.log(index)
-
 }
 
 
