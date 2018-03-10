@@ -71,6 +71,8 @@ console.log (
     'Actores: ' + pelicula.getActores()
 )
 
+// console.log(pelicula.actores)
+
 
 // Generación de objeto usando los Setters
 
@@ -86,44 +88,4 @@ console.log (
     'Actores: ' + otraPelicula.actores.join(' & ')
 )
 
-
-
-
-
-
-// [ ---- Get y Set ----]
-
-// var obj = {
-//     A: 7,
-//     get B() {
-//         return this.A + 1;
-//     },
-//     set C(x) {
-//         this.A = x / 2;
-//     }
-// };
-//
-// console.log(obj.A) // 7
-// console.log(obj.B) // 8
-// obj.C = 90;
-// console.log(obj.A) // 45
-
-
-
-
-
-
-// [ ---- Set ----]
-//
-// var obj = {
-//     set value(x) {
-//         this.array.push(x);
-//     },
-//     array: []
-// }
-// obj.value ='Value #1';
-// console.log(obj.array) //['Value #1']
-//
-// obj.value ='Value #2';
-// console.log(obj.array) //['Value #1', 'Value #2']
-
+// console.log(otraPelicula.actores)
