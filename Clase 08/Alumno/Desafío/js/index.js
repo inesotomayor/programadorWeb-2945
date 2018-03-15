@@ -101,8 +101,8 @@ function buscarAlumno (nombre) {
         console.log('Nombre no encontrado.')
     }
     return {
-        id : id,
-        index : index
+        id: id,
+        index: index
     }
 }
 
