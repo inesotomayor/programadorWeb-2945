@@ -2,6 +2,23 @@
 // - La función tiene que poder buscar y eliminar un nombre en una lista tipo array almacenada en el localStorage sin importar mayúsculas ni minúsculas. Se provee una lista inicial que podría estar cargada o no, la función tiene que poder verificarlo y no romper si la lista no existe.
 
 
+// // Traer array de localSotrage o crear un vacío si no hay nada:
+//
+// var studentsList = []
+//
+// function createArray () {
+//     var localStudentsList = localStorage.getItem('studentList')
+//     var studentsList
+//
+//     if (localStudentsList) {
+//         studentsList = JSON.parse(localStudentsList)
+//     } else {
+//         studentsList = []
+//     }
+// }
+
+
+
 var studentsList = ['CARLOS','GERONIMO','NICOLAS','LUCAS','MARIA','FEDERICO','ANTONIO','LORNA','JULIAN','DIEGO','DANIELA','JUAN','MATEO','BARBARA','AGUSTIN','MARIO','MARIEL','ANA','FLORENCIA']
 
 
@@ -15,6 +32,7 @@ var stringStudentList = JSON.stringify(studentsList)
 
 localStorage.setItem('studentList', stringStudentList)
 console.log('Guardado en localStorage: ' + stringStudentList)
+
 
 
 function pasarAMayusculas (studentName) {
