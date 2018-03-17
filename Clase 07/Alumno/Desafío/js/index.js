@@ -66,8 +66,8 @@ function eliminarNombre () {
     if (index !== -1) {
         studentsList.splice(index, 1)
 
-        // Borrar localStorage key
-        localStorage.removeItem('studentList')
+        // Borrar localStorage key - NO ES NECESARIO
+        // localStorage.removeItem('studentList')
 
         // Llevar el nuevo array a localStorage como string:
         var stringStudentList = JSON.stringify(studentsList)
