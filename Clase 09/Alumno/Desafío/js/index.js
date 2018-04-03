@@ -227,7 +227,6 @@ function validateAllFields () {
 
 function showErrorOnEmptyInput (event) {
     var inputNode = event && event.target
-
     var value = inputNode && inputNode.value
     if (value) {
         showValidInput(inputNode)

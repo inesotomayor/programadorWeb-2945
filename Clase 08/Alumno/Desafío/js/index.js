@@ -114,13 +114,13 @@ function mostrarAlumnos (alumnos) {
     for (var i = 0; i < alumnos.length; i++) {
         alumno = alumnos[i]
 
-        var lialumno = crearAlumnoLi(
+        var liAlumno = crearAlumnoLi(
             alumno.firstName,
             alumno.lastName,
             alumno.dni,
             alumno.examResults
         )
-        listContainer.appendChild(lialumno)
+        listContainer.appendChild(liAlumno)
     }
 }
 
