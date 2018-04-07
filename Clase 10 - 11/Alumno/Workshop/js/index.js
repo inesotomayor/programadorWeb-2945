@@ -227,29 +227,6 @@ function addStudentLi (firstName, lastName, dni, email) {
     resetAllInputs()
 }
 
-// // AGREGAR ALUMNO A LA LISTA DE BÚSQUEDA
-//
-// function addStudentSearchLi (firstName, lastName, dni, email) {
-//     var searchList = document.getElementById('searchList')
-//     var dni = document.getElementById('dni')
-//     var firstName = document.getElementById('firstName')
-//     var lastName = document.getElementById('lastName')
-//     var email = document.getElementById('email')
-//     var dniValue = dni.value
-//     var firstNameValue = firstName.value
-//     var lastNameValue = lastName.value
-//     var emailValue = email.value
-//
-//     var li = document.createElement('li')
-//     li.className = 'list-group-item '
-//     li.id = dniValue
-//     var fullDni = 'DNI: ' + dniValue
-//     li.innerHTML = '<h1>' + firstNameValue + '</h1><h2>' + lastNameValue +  '</h2><p>' + fullDni + '<br>' + emailValue + '</p>'
-//
-//     searchList.appendChild(li)
-//     agregarAlumno(firstNameValue, lastNameValue, dniValue, emailValue)
-// }
-
 
 // BORRAR ALUMNO
 
