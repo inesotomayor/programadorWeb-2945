@@ -38,13 +38,13 @@ function createStudentNodeExtended (student) {
   li.innerHTML =
     '<h1>' +
     student.firstName +
-    '<h1><h1>' +
+    '</h1><h1>' +
     student.lastName +
-    '<h1><h3>DNI: ' +
+    '</h1><h3>DNI: ' +
     student.dni +
-    '<h3><p>' +
+    '</h3><p>' +
     student.email +
-    '<p>'
+    '</p>'
 
   li.className = 'list-group-item'
 
@@ -57,6 +57,7 @@ function createStudentNodeExtended (student) {
 
 function validateButtonSimple () {
   var validFields = document.getElementsByClassName('is-valid')
+
   // VE: Valido por 4 campos
   if (validFields.length === 4) {
     addStudentButton.disabled = false
@@ -106,7 +107,7 @@ document.getElementById('dni').onblur = function (event) {
 
   var value = dniNode.value
 
-  parsedDni = parseInt(value, 10)
+  var parsedDni = parseInt(value, 10)
 
   if (
     parsedDni &&
@@ -151,7 +152,7 @@ document.getElementById('email').onblur = function (event) {
 
 // Agrego el evento onclick para agregar un estudiante
 
-// VE: Agrego los campos lastnName e email
+// VE: Agrego los campos lastName e email
 
 addStudentButton.onclick = function (event) {
   var firstNameNode = document.getElementById('firstName')
@@ -159,7 +160,7 @@ addStudentButton.onclick = function (event) {
   var dniNode = document.getElementById('dni')
   var emailNode = document.getElementById('email')
 
-  parsedDni = parseInt(dniNode.value, 10)
+  var parsedDni = parseInt(dniNode.value, 10)
 
   addStudentExtended(
     firstNameNode.value,
@@ -188,7 +189,7 @@ document.getElementById('deleteDni').onblur = function (event) {
 
   var value = dniNode.value
 
-  parsedDni = parseInt(value, 10)
+  var parsedDni = parseInt(value, 10)
 
   if (searchIndexByDni(parsedDni) !== -1) {
     deleteStudentButton.disabled = false
@@ -204,13 +205,13 @@ deleteStudentButton.onclick = function () {
 
   var value = dniNode.value
 
-  var studenNode = document.getElementById(value)
+  var studentNode = document.getElementById(value)
 
   var mainList = document.getElementById('mainList')
 
-  mainList.removeChild(studenNode)
+  mainList.removeChild(studentNode)
 
-  parsedDni = parseInt(dni, 10)
+  var parsedDni = parseInt(value, 10)
 
   var studentsList = getLocalStorageList()
 
@@ -298,8 +299,6 @@ searchStudentButton.onclick = function (event) {
   searchList.innerHTML = ''
 
   if (index !== -1) {
-    deleteStudentButton.disabled = false
-
     var studentsList = getLocalStorageList()
 
     var studentNode = createStudentNodeExtended(studentsList[index])
