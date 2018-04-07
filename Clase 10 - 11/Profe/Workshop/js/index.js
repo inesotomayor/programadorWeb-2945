@@ -74,7 +74,7 @@ document.getElementById('dni').onblur = function (event) {
 
   var value = dniNode.value
 
-  parsedDni = parseInt(value, 10)
+  var parsedDni = parseInt(value, 10)
 
   if (
     parsedDni &&
@@ -98,7 +98,7 @@ document.getElementById('dni').onblur = function (event) {
 addStudentButton.onclick = function (event) {
   var firstNameNode = document.getElementById('firstName')
   var dniNode = document.getElementById('dni')
-  parsedDni = parseInt(dniNode.value, 10)
+  var parsedDni = parseInt(dniNode.value, 10)
 
   addStudentSimple(firstNameNode.value, parsedDni)
 
@@ -118,7 +118,7 @@ document.getElementById('deleteDni').onblur = function (event) {
 
   var value = dniNode.value
 
-  parsedDni = parseInt(value, 10)
+  var parsedDni = parseInt(value, 10)
 
   if (searchIndexByDni(parsedDni) !== -1) {
     deleteStudentButton.disabled = false
@@ -140,7 +140,7 @@ deleteStudentButton.onclick = function () {
 
   mainList.removeChild(studenNode)
 
-  parsedDni = parseInt(dni, 10)
+  var parsedDni = parseInt(value, 10)
 
   var studentsList = getLocalStorageList()
 
