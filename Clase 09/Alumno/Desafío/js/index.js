@@ -194,7 +194,7 @@ inputEdad.onblur = function (event) {
 
     // Validar que se ingrese un número:
     if (isNaN(parsedEdad)) {
-        showValidInput(inputEdadNode)
+        showInvalidInput(inputEdadNode)
         NumeroErrorNode = document.createElement('span')
         NumeroErrorNode.id = 'NumeroError'
         NumeroErrorNode.innerHTML = 'Ingrese un número válido. '
