@@ -1,6 +1,9 @@
 var inputTextNodes = $('.form-control')
 var inputEmailNode = $('#email')
 
+
+// VALIDAR TODOS LOS CAMPOS COMPLETOS
+
 inputTextNodes.blur(function () {
     var inputTextNode = $(this)
     var value = inputTextNode.val()
@@ -19,6 +22,8 @@ inputTextNodes.blur(function () {
     allowSubmitButton()
 })
 
+
+// VALIDAR EMAIL
 
 inputEmailNode.blur(function() {
     var value = inputEmailNode.val()
