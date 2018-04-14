@@ -7,3 +7,5 @@
 /package-lock.jsonç
 /Teoria plataforma
 /Workshop Final
+*.xml
+*.iml
