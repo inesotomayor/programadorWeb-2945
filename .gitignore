@@ -10,3 +10,7 @@
 /Workshop Final
 *.xml
 *.iml
+*.json
+*.bowerrc
+*.editorconfig
+*.gitattributes

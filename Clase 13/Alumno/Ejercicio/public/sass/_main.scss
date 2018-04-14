@@ -1,0 +1,22 @@
+body {
+  padding-top: 50px;
+}
+
+#main-logo {
+  float: left;
+  margin-right: 15px;
+}
+.brand-name {
+  color: #fff !important;
+}
+
+.nav a {
+  cursor: pointer;
+  &.active {
+    color: #c1e2b3 !important;
+  }
+}
+
+#root {
+  padding: 100px 30px;
+}

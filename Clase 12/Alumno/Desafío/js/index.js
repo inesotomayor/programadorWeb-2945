@@ -1,23 +1,29 @@
+// Errores y otras variables
+
+var REQUIRED_FIELD = 'Campo obligatorio'
+var REQUIRED_CARACTER = 'Debe tener un '
+var ERROR_TYPE = 'Tiene que ser de tipo '
+
 var inputTextNodes = $('.form-control')
-var inputEmailNode = $('input[type="email"]')
+var inputNode = $('input[type="email"]')
 
 
 // VALIDAR TODOS LOS CAMPOS COMPLETOS
 
 inputTextNodes.blur(function () {
-    var inputTextNode = $(this)
-    var value = inputTextNode.val()
-    var parentNode = inputTextNode.parent()
+    var inputNode = $(this)
+    var value = inputNode.val()
+    var parentNode = inputNode.parent()
 
     // Quitar error si ya hay mensaje
     parentNode.children('.error').remove()
 
     if (value) {
-        setValid(inputTextNode)
-        inputTextNode.next().remove()
+        setValid(inputNode)
+        inputNode.next().remove()
     } else {
-        setInvalid(inputTextNode)
-        parentNode.append('<p class="error">Completar este campo</p>')
+        setInvalid(inputNode)
+        parentNode.append('<p class="error">' + REQUIRED_FIELD + '</p>')
     }
     allowSubmitButton()
 })
@@ -25,23 +31,30 @@ inputTextNodes.blur(function () {
 
 // VALIDAR EMAIL
 
-inputEmailNode.blur(function() {
-    var value = inputEmailNode.val()
-    var parentNode = inputEmailNode.parent()
+inputNode.blur(function() {
+    var value = inputNode.val()
+    var parentNode = inputNode.parent()
 
     // Quitar error si ya hay mensaje
     parentNode.children('.error').remove()
 
+    var errorText = ''
+
     if (!value) {
-        setInvalid(inputEmailNode)
-        parentNode.append('<p class="error">Completar este campo</p>')
+        errorText = REQUIRED_FIELD
+    } else if (typeof value !== 'string') {
+        errorText = ERROR_TYPE + 'String'
+    } else if (value.indexOf('@') === -1) {
+        errorText = errorText + REQUIRED_CARACTER + 'arroba @'
+    } else if (value.indexOf('.') === -1) {
+        errorText = errorText + REQUIRED_CARACTER + 'punto .'
     }
-    else if (value && typeof value === 'string' && value.indexOf('@') > -1 && value.indexOf('.') > -1) {
-        setValid(inputEmailNode)
-        inputEmailNode.next().remove()
+
+    if (!errorText) {
+        setValid(inputNode)
     } else {
-        setInvalid(inputEmailNode)
-        parentNode.append('<p class="error">Email inválido</p>')
+        setInvalid(inputNode)
+        parentNode.append('<p class="error">' + errorText + '</p>')
     }
     allowSubmitButton()
 })
