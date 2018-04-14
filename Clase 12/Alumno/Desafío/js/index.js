@@ -1,5 +1,5 @@
 var inputTextNodes = $('.form-control')
-var inputEmailNode = $('#email')
+var inputEmailNode = $('input[type="email"]')
 
 
 // VALIDAR TODOS LOS CAMPOS COMPLETOS
@@ -51,11 +51,9 @@ inputEmailNode.blur(function() {
 
 function allowSubmitButton () {
     if ($('#firstName').hasClass('is-valid') && $('#email').hasClass('is-valid') && $('#comments').hasClass('is-valid')) { // Si los 3 campos son válidos
-        submitButton.disabled = false
-        console.log('SI')
+        $('#submitButton').prop('disabled', false)
     } else {
-        submitButton.disabled = true
-        console.log('NO')
+        $('#submitButton').prop('disabled', true)
     }
 }
 
