@@ -12,9 +12,12 @@ var inputEmailNodes = $('input[type="email"]')
 
 $(inputTextNodes).one('blur', function () {
     var inputNode = $(this)
+
     validateField(inputNode)
+
     $(inputTextNodes).on('input', function () {
         var inputNode = $(this)
+
         validateField(inputNode)
 
         allowSubmitButton()
@@ -26,7 +29,9 @@ $(inputTextNodes).one('blur', function () {
 
 $(inputEmailNodes).one('blur', function () {
     var inputNode = $(this)
+
     validateField(inputNode)
+
     $(inputEmailNodes).on('input', function () {
         var value = inputNode.val()
         var parentNode = inputNode.parent()
