@@ -134,12 +134,12 @@ var peopleController = function () {
     // AL CLICK REALIZAR BÚSQUEDA / GUARDAR / BORRAR FILA
 
     $(document).on('click', '.btn-guardar', function() {
-      var searchText = $(this).parent().parent().children('td.name').html()
+      var keyword = $(this).parent().parent().children('td.name').html()
 
       // BUSCAR EN AMBOS LISTADOS
 
-      var index = searchInMainList(searchText)
-      var indexSaved = searchInSavedList(searchText)
+      var index = search(keyword, charactersList)
+      var indexSaved = search(keyword, savedList)
       console.log('Index general: ' + index)
       console.log('Index guardados: ' + indexSaved)
 
@@ -163,36 +163,19 @@ var peopleController = function () {
     })
 
 
-    // BUSCAR EN LA LISTA GENERAL
 
-    function searchInMainList (searchText) {
+    // BUSCAR EN CUALQUIER ARRAY DE OBJETOS
+
+    function search (keyword, array) {
       var index = -1
 
-      for (var i = 0; i < charactersList.length; i++) {
-        var character = charactersList[i]
-        var name = character.name
+      for (var i = 0; i < array.length; i++) {
+        var object = array[i]
+        var name = object.name
 
-        if (name.indexOf(searchText) !== -1) {
+        if (name.indexOf(keyword) !== -1) {
           index = i
-          console.log('Personaje en lista general: ' + name + ' / Index: ' + index)
-          break
-        }
-      }
-      return index
-    }
-
-    // BUSCAR EN RESULTADOS GUARDADOS
-
-    function searchInSavedList (searchText) {
-      var index = -1
-
-      for (var i = 0; i < savedList.length; i++) {
-        var character = savedList[i]
-        var name = character.name
-
-        if (name.indexOf(searchText) !== -1) {
-          index = i
-          console.log('Personaje en guardados: ' + name + ' / Index: ' + index)
+          console.log('Objeto en el lisado: ' + name + ' / Index: ' + index)
           break
         }
       }

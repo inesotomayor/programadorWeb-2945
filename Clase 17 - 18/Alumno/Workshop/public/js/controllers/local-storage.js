@@ -105,10 +105,10 @@ var localstorageController = function () {
     // BORRAR AL CLICK
 
     $(document).on('click', '.btn-eliminar', function() {
-      var searchText = $(this).parent().parent().children('td.name').html()
+      var keyword = $(this).parent().parent().children('td.name').html()
 
       // BORRAR DEL ARRAY
-      var index = searchInSavedList(searchText)
+      var index = search(keyword, savedList)
       savedList.splice([index],1)
 
       // BORRAR DEL LOCAL STORAGE
@@ -121,21 +121,23 @@ var localstorageController = function () {
 
 
 
-    // BUSCAR EN RESULTADOS GUARDADOS
+      // BUSCAR EN CUALQUIER ARRAY DE OBJETOS
 
-    function searchInSavedList (searchText) {
-      var index = -1
-      for (var i = 0; i < savedList.length; i++) {
-        var character = savedList[i]
-        var name = character.name
+      function search (keyword, array) {
+          var index = -1
 
-        if (name.indexOf(searchText) !== -1) {
-          index = i
-          break
-        }
+          for (var i = 0; i < array.length; i++) {
+              var object = array[i]
+              var name = object.name
+
+              if (name.indexOf(keyword) !== -1) {
+                  index = i
+                  console.log('Objeto en el lisado: ' + name + ' / Index: ' + index)
+                  break
+              }
+          }
+          return index
       }
-      return index
-    }
 
   })
 
