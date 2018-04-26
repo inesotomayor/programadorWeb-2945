@@ -138,8 +138,8 @@ var peopleController = function () {
 
       // BUSCAR EN AMBOS LISTADOS
 
-      var index = search(keyword, charactersList)
-      var indexSaved = search(keyword, savedList)
+      var index = searchName(keyword, charactersList)
+      var indexSaved = searchName(keyword, savedList)
       console.log('Index general: ' + index)
       console.log('Index guardados: ' + indexSaved)
 
@@ -164,9 +164,9 @@ var peopleController = function () {
 
 
 
-    // BUSCAR EN CUALQUIER ARRAY DE OBJETOS
+    // BUSCAR EN ARRAY DE OBJETOS
 
-    function search (keyword, array) {
+    function searchName (keyword, array) {
       var index = -1
 
       for (var i = 0; i < array.length; i++) {
@@ -175,7 +175,6 @@ var peopleController = function () {
 
         if (name.indexOf(keyword) !== -1) {
           index = i
-          console.log('Objeto en el lisado: ' + name + ' / Index: ' + index)
           break
         }
       }

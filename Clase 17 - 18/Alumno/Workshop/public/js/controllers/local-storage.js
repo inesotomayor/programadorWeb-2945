@@ -108,7 +108,7 @@ var localstorageController = function () {
       var keyword = $(this).parent().parent().children('td.name').html()
 
       // BORRAR DEL ARRAY
-      var index = search(keyword, savedList)
+      var index = searchName(keyword, savedList)
       savedList.splice([index],1)
 
       // BORRAR DEL LOCAL STORAGE
@@ -121,9 +121,9 @@ var localstorageController = function () {
 
 
 
-      // BUSCAR EN CUALQUIER ARRAY DE OBJETOS
+      // BUSCAR EN ARRAY DE OBJETOS
 
-      function search (keyword, array) {
+      function searchName (keyword, array) {
           var index = -1
 
           for (var i = 0; i < array.length; i++) {
@@ -132,7 +132,6 @@ var localstorageController = function () {
 
               if (name.indexOf(keyword) !== -1) {
                   index = i
-                  console.log('Objeto en el lisado: ' + name + ' / Index: ' + index)
                   break
               }
           }
