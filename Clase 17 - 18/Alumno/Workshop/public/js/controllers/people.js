@@ -139,8 +139,8 @@ var peopleController = function () {
       // BUSCAR EN AMBOS LISTADOS
 
       var index = searchName(keyword, charactersList)
-      var indexSaved = searchName(keyword, savedList)
       console.log('Index general: ' + index)
+      var indexSaved = searchName(keyword, savedList)
       console.log('Index guardados: ' + indexSaved)
 
       if (indexSaved == -1) {
