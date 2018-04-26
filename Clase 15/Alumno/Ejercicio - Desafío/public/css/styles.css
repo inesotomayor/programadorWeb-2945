@@ -1,0 +1,25 @@
+@import url(../bower_components/bootstrap/dist/css/bootstrap.min.css);
+/* line 1, ../sass/_main.scss */
+#main-logo {
+  float: left;
+  margin-right: 15px;
+}
+
+/* line 5, ../sass/_main.scss */
+.brand-name {
+  color: #fff !important;
+}
+
+/* line 9, ../sass/_main.scss */
+.nav-link {
+  cursor: pointer;
+}
+/* line 11, ../sass/_main.scss */
+.nav-link.active {
+  color: #fff !important;
+}
+
+/* line 16, ../sass/_main.scss */
+#root {
+  padding: 100px 30px;
+}

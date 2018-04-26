@@ -1,0 +1,18 @@
+#main-logo {
+  float: left;
+  margin-right: 15px;
+}
+.brand-name {
+  color: #fff !important;
+}
+
+.nav-link {
+  cursor: pointer;
+  &.active {
+    color: #fff !important;
+  }
+}
+
+#root {
+  padding: 100px 30px;
+}

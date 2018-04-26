@@ -8,3 +8,10 @@
 /package-lock.json
 
 /Clase 17 - 18/Profe/Workshop
+*.xml
+.idea
+*.bowerrc
+*.editorconfig
+*.json
+*.gitattributes
+*.rb

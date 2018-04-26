@@ -1,0 +1,47 @@
+@import url(../bower_components/bootstrap/dist/css/bootstrap.min.css);
+@font-face {
+  font-family: Starwars;
+  src: local("Starwars"), url(../fonts/Starjedi.ttf);
+  font-weight: bold;
+}
+/* line 7, ../sass/_main.scss */
+body {
+  background: url(../img/starwars_2.jpg) 50% 50% no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: 'Starwars';
+  height: 100vh;
+  letter-spacing: 2px;
+  width: 100%;
+}
+/* line 15, ../sass/_main.scss */
+body::before {
+  background: rgba(0, 0, 0, 0.7);
+  content: '';
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+/* line 28, ../sass/_main.scss */
+.nav-link {
+  cursor: pointer;
+  transition: all .2s ease-in;
+}
+/* line 31, ../sass/_main.scss */
+.nav-link:hover {
+  color: #c69500 !important;
+}
+
+/* line 36, ../sass/_main.scss */
+.btn-dark {
+  background-color: #c69500 !important;
+}
+
+/* line 41, ../sass/_main.scss */
+.table td, .table th {
+  vertical-align: middle !important;
+}

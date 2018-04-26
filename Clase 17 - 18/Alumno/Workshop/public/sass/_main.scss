@@ -1,0 +1,45 @@
+@font-face {
+  font-family: Starwars;
+  src: local("Starwars"), url(../fonts/Starjedi.ttf);
+  font-weight: bold;
+}
+
+body {
+  background: url(../img/starwars_2.jpg) 50% 50% no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: 'Starwars';
+  height: 100vh;
+  letter-spacing: 2px;
+  width: 100%;
+  &::before {
+    background: rgba(#000, .7);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+
+  }
+}
+
+.nav-link {
+  cursor: pointer;
+  transition: all .2s ease-in;
+  &:hover {
+    color: #c69500 !important;
+  }
+}
+
+.btn-dark {
+  background-color: #c69500 !important;
+}
+
+.table {
+  td, th {
+    vertical-align: middle !important;
+  }
+}
+
