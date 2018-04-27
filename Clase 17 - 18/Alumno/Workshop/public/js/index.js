@@ -43,4 +43,14 @@ $(document).ready(function () {
         })
     })
 
+
+    // Click - Search
+
+    $('#searchButton').click(function () {
+        $('.nav-link').removeClass('active')
+        $('#root').fadeOut(300, function () {
+            $('#root').load('../partials/search.html', searchController).fadeIn(300)
+        })
+    })
+
 })

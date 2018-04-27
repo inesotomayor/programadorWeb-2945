@@ -17,6 +17,10 @@ var localstorageController = function () {
 
     function showSaved () {
 
+      $('#guardados').append('<span id="cantidad"></span> ' +
+          'Personajes guardados'
+      )
+
       for (var i = 0; i < savedList.length; i++) {
         var character = savedList[i]
         var index = i + 1
@@ -99,6 +103,12 @@ var localstorageController = function () {
             '</tr>'
         )
       }
+
+      // DATOS DE LA LISTA
+
+      var count = savedList.length
+      $('#cantidad').html(count)
+
     }
 
 
@@ -114,8 +124,10 @@ var localstorageController = function () {
       // BORRAR DEL LOCAL STORAGE
       localStorage.setItem("savedList", JSON.stringify(savedList))
 
-      // BORRAR TR
+      // BORRAR TR + CAMBIAR nº
       $(this).parent().parent().fadeOut('fast')
+      var count = savedList.length
+      $('#cantidad').html(count)
 
     })
 

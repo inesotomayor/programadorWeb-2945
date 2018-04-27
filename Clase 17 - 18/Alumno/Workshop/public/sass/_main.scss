@@ -43,3 +43,10 @@ body {
   }
 }
 
+.search {
+  flex: 1;
+  form {
+    float: right;
+    width: 480px;
+  }
+}

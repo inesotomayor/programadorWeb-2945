@@ -45,3 +45,13 @@ body::before {
 .table td, .table th {
   vertical-align: middle !important;
 }
+
+/* line 46, ../sass/_main.scss */
+.search {
+  flex: 1;
+}
+/* line 48, ../sass/_main.scss */
+.search form {
+  float: right;
+  width: 480px;
+}

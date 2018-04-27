@@ -19,13 +19,15 @@ var peopleController = function () {
         console.log('Pidiendo info...')
         AjaxCall.getData(url, showPeople)
 
-
-
         // MOSTRAR PERSONAJES DE LA API
 
         function showPeople (error, data) {
             if (!error) {
                 var people = data.results
+
+                $('#personajes').append('<span id="cantidad"></span> ' +
+                    'Personajes'
+                )
 
                 for (var i = 0; i < people.length; i++) {
                     var character = people[i]
@@ -130,6 +132,11 @@ var peopleController = function () {
                     }
                 }
 
+                // DATOS DE LA LISTA
+
+                var count = data.count
+                $('#cantidad').html(count - savedList.length)
+
                 // BOTÓN DE VER MÁS
 
                 if (data.next) {
@@ -174,6 +181,14 @@ var peopleController = function () {
             // BORRAR TR
             $(this).parent().parent().fadeOut('fast')
 
+
+            // CÖMO CONTABILIZAR Nº DE RESULTADOS GENERALES y RESTAR AL GUARDAR (¿?)
+            // function getAPIResults () {
+            //     count = data.count
+            //     return count
+            // }
+            // var count = getAPIResults()
+            // $('#cantidad').html((count - savedList.length) - 1)
         })
 
 
