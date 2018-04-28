@@ -7,7 +7,6 @@ var peopleController = function () {
         var charactersList = []
         var totalCharacters = null
 
-
         // ARRAY GUARDADOS - TRAER DE LOCAL STORAGE O CREAR VACÍO Y GUARDARLO
         var savedList = JSON.parse(localStorage.getItem('savedList'))
         if (savedList == null) {
@@ -50,8 +49,8 @@ var peopleController = function () {
                         localStorage.setItem("charactersList", JSON.stringify(charactersList))
 
                         // TRADUCIR Y ARMAR FILAS TABLA
-                        var index = index + 1
-                        createTable (charactersList, character, index, 'guardar')
+                        var id = index + 1
+                        createTable (charactersList, character, id, 'guardar')
                     }
                 }
 

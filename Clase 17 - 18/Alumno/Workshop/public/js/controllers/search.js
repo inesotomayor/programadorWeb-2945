@@ -46,18 +46,17 @@ var searchController = function () {
                 for (var i = 0; i < people.length; i++) {
                     var character = people[i]
                     var keyword = character.name
-                    var index = i + 1
 
                     // AGREGAR A ARRAY GENERAL
                     searchList.push(character)
-
 
                     // AGREGAR A LOCAL STORAGE
                     localStorage.setItem("searchList", JSON.stringify(searchList))
 
 
                     // TRADUCIR Y ARMAR FILAS TABLA
-                    createTable (charactersList, character, index, 'guardarBusqueda')
+                    var id = i + 1
+                    createTable (charactersList, character, id, 'guardarBusqueda')
                 }
 
                 // HABILITAR BOTÓN DE VER MÁS

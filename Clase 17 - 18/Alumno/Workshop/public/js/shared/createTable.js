@@ -2,9 +2,7 @@
 
 var btnType = ''
 
-function createTable (array, object, index, btn) {
-
-    id = array.length
+function createTable (array, object, id, btn) {
 
     if (btn === 'guardar') {
         btnType = '<button class="btn btn-success btn-guardar" type="button">Guardar</button>'
@@ -84,7 +82,7 @@ function createTable (array, object, index, btn) {
 
     $('#tableBody').append(
         '<tr>' +
-        '<th scope="row">' + index + '</th>' +
+        '<th scope="row">' + id + '</th>' +
         '<td class="name">' + object.name + '</td>' +
         '<td>' + object.gender + '</td>' +
         '<td>' + object.height + ' cm</td>' +
