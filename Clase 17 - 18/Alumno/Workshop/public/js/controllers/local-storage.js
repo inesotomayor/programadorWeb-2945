@@ -23,9 +23,9 @@ var localstorageController = function () {
 
       for (var i = 0; i < savedList.length; i++) {
         var character = savedList[i]
+        var id = i + 1
 
         // TRADUCIR Y ARMAR FILAS TABLA
-        var id = i + 1
         createTable (savedList, character, id, 'eliminar')
       }
 

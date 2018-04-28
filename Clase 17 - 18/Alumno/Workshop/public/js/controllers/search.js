@@ -46,6 +46,7 @@ var searchController = function () {
                 for (var i = 0; i < people.length; i++) {
                     var character = people[i]
                     var keyword = character.name
+                    var id = i + 1
 
                     // AGREGAR A ARRAY GENERAL
                     searchList.push(character)
@@ -55,7 +56,6 @@ var searchController = function () {
 
 
                     // TRADUCIR Y ARMAR FILAS TABLA
-                    var id = i + 1
                     createTable (charactersList, character, id, 'guardarBusqueda')
                 }
 

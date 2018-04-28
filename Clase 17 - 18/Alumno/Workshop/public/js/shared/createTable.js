@@ -4,15 +4,19 @@ var btnType = ''
 
 function createTable (array, object, id, btn) {
 
-    if (btn === 'guardar') {
-        btnType = '<button class="btn btn-success btn-guardar" type="button">Guardar</button>'
+    switch(btn) {
+        case 'guardar':
+            btnType = '<button class="btn btn-success btn-guardar" type="button">Guardar</button>'
+        break;
+        case 'guardarBusqueda':
+            btnType = '<button class="btn btn-success btn-guardar-encontrados" type="button">Guardar</button>'
+            break;
+        case 'eliminar':
+            btnType = '<button class="btn btn-danger btn-eliminar" type="button">Eliminar</button>'
+            break;
+        default : '';
     }
-    if (btn === 'guardarBusqueda') {
-        btnType = '<button class="btn btn-success btn-guardar-encontrados" type="button">Guardar</button>'
-    }
-    if (btn === 'eliminar') {
-        btnType = '<button class="btn btn-danger btn-eliminar" type="button">Eliminar</button>'
-    }
+
 
     switch (object.gender) {
         case 'male':

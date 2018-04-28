@@ -37,6 +37,7 @@ var peopleController = function () {
                     // BUSCAR DUPLICADOS ENTRE LOS DOS ARRAYS
                     var index = searchName(keyword, charactersList)
                     var indexSaved = searchName(keyword, savedList)
+                    var id = index + 1
 
                     // SI ESTÁ DUPLICADO NO CARGARLO EN LA TABLA Y QUITAR DEL ARRAY GENERAL
                     if (indexSaved !== -1) {
@@ -49,7 +50,6 @@ var peopleController = function () {
                         localStorage.setItem("charactersList", JSON.stringify(charactersList))
 
                         // TRADUCIR Y ARMAR FILAS TABLA
-                        var id = index + 1
                         createTable (charactersList, character, id, 'guardar')
                     }
                 }
