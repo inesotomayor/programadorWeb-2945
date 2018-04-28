@@ -25,6 +25,9 @@ function createTable (array, object, id, btn) {
         case 'female':
             object.gender = 'Mujer'
             break
+        case 'hermaphrodite':
+            object.gender = 'Hermafrodita'
+            break
         case 'n/a':
             object.gender = '-'
             break
