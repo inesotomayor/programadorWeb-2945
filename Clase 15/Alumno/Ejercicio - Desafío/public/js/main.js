@@ -15,27 +15,33 @@ $(document).ready(function () {
     // Click - Home c/ otra función después
 
     $('#home').click(function () {
-        $('#root').load('../partials/home.html', function () {
-            console.log('Home')
+        $('#root').fadeOut(300, function () {
+            $('#root').load('../partials/home.html').fadeIn(300)
         })
     })
 
     // Click - sección 1
 
     $('#people').click(function () {
-        $('#root').load('../partials/seccion1.html')
+        $('#root').fadeOut(300, function () {
+            $('#root').load('../partials/seccion1.html').fadeIn(300)
+        })
     })
 
     // Click - sección 2
 
     $('#localStorage').click(function () {
-        $('#root').load('../partials/seccion2.html')
+        $('#root').fadeOut(300, function () {
+            $('#root').load('../partials/seccion2.html').fadeIn(300)
+        })
     })
 
     // Click - sección 3
 
     $('#contact').click(function () {
-        $('#root').load('../partials/seccion3.html')
+        $('#root').fadeOut(300, function () {
+            $('#root').load('../partials/seccion3.html').fadeIn(300)
+        })
     })
 
 })
