@@ -126,7 +126,7 @@ var peopleController = function () {
                             '<td>' + character.height + ' cm</td>' +
                             '<td>' + character.mass + ' kg</td>' +
                             '<td>' + character.eye_color + '</td>' +
-                            '<td><button class="btn btn-primary btn-guardar" type="button">Guardar</button></td>' +
+                            '<td><button class="btn btn-success btn-guardar" type="button">Guardar</button></td>' +
                             '</tr>'
                         )
                     }
