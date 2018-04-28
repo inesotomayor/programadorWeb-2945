@@ -3,8 +3,9 @@ var peopleController = function () {
 
     $(document).ready(function () {
 
-        // ARRAY PERSONAJES
+        // ARRAYS PERSONAJES Y TOTAL DE PERSONAJES DE LA API
         var charactersList = []
+        var totalCharacters = null
 
 
         // ARRAY GUARDADOS - TRAER DE LOCAL STORAGE O CREAR VACÍO Y GUARDARLO
@@ -14,10 +15,10 @@ var peopleController = function () {
             localStorage.setItem("savedList", JSON.stringify(savedList))
         }
 
-
         var url = 'https://swapi.co/api/people/'
         console.log('Pidiendo info...')
         AjaxCall.getData(url, showPeople)
+
 
         // MOSTRAR PERSONAJES DE LA API
 
@@ -25,9 +26,7 @@ var peopleController = function () {
             if (!error) {
                 var people = data.results
 
-                $('#personajes').append('<span id="cantidad"></span> ' +
-                    'Personajes'
-                )
+                $('#personajes').append('<span id="cantidad"></span> ' + 'Personajes')
 
                 for (var i = 0; i < people.length; i++) {
                     var character = people[i]
@@ -50,102 +49,22 @@ var peopleController = function () {
                         // AGREGAR A LOCAL STORAGE
                         localStorage.setItem("charactersList", JSON.stringify(charactersList))
 
-                        switch (character.gender) {
-                            case 'male':
-                                character.gender = 'Hombre'
-                                break
-                            case 'female':
-                                character.gender = 'Mujer'
-                                break
-                            case 'n/a':
-                                character.gender = '-'
-                                break
-                        }
-
-                        switch (character.mass) {
-                            case 'unknown':
-                                character.mass = '-'
-                                break
-                        }
-
-                        switch (character.eye_color) {
-                            case 'yellow':
-                                character.eye_color = 'Amarillo'
-                                break
-                            case 'red':
-                                character.eye_color = 'Rojo'
-                                break
-                            case 'blue':
-                                character.eye_color = 'Azul'
-                                break
-                            case 'brown':
-                                character.eye_color = 'Marrón'
-                                break
-                            case 'black':
-                                character.eye_color = 'Negro'
-                                break
-                            case 'orange':
-                                character.eye_color = 'Naranja'
-                                break
-                            case 'blue-gray':
-                                character.eye_color = 'Griz azulado'
-                                break
-                            case 'hazel':
-                                character.eye_color = 'Avellana'
-                                break
-                            case 'pink':
-                                character.eye_color = 'Rosa'
-                                break
-                            case 'gold':
-                                character.eye_color = 'Dorado'
-                                break
-                            case 'red, blue':
-                                character.eye_color = 'Rojo, Azul'
-                                break
-                            case 'green, yellow':
-                                character.eye_color = 'Verde, Amarillo'
-                                break
-                            case 'white':
-                                character.eye_color = 'Blanco'
-                                break
-                            case 'dark':
-                                character.eye_color = 'Oscuro'
-                                break
-                            case 'unknown':
-                                character.eye_color = '-'
-                                break
-                        }
-
-                        // ARMAR FILAS TABLA
-
-                        $('#tableBody').append(
-                            '<tr>' +
-                            '<th scope="row">' + charactersList.length + '</th>' +
-                            '<td class="name">' + character.name + '</td>' +
-                            '<td>' + character.gender + '</td>' +
-                            '<td>' + character.height + ' cm</td>' +
-                            '<td>' + character.mass + ' kg</td>' +
-                            '<td>' + character.eye_color + '</td>' +
-                            '<td><button class="btn btn-success btn-guardar" type="button">Guardar</button></td>' +
-                            '</tr>'
-                        )
+                        // TRADUCIR Y ARMAR FILAS TABLA
+                        var index = index + 1
+                        createTable (charactersList, character, index, 'guardar')
                     }
                 }
 
-                // DATOS DE LA LISTA
-
-                var count = data.count
-                $('#cantidad').html(count - savedList.length)
-
-                // BOTÓN DE VER MÁS
-
-                if (data.next) {
-                    $('#seeMore').one('click', function () {
-                        AjaxCall.getData(data.next, showPeople)
-                    })
-                } else {
-                    $('#seeMore').attr('disabled', true)
+                // ACTUALIZAR DATOS DE LA LISTA
+                if (totalCharacters === null) {
+                    totalCharacters = data.count - savedList.length
                 }
+                $('#cantidad').html(totalCharacters)
+
+
+                // HABILITAR BOTÓN DE VER MÁS
+                checkNextButton (data, showPeople)
+
             } else {
                 console.log('Hay un error', error)
             }
@@ -156,6 +75,8 @@ var peopleController = function () {
 
         $(document).on('click', '.btn-guardar', function() {
             var keyword = $(this).parent().parent().children('td.name').html()
+            totalCharacters = totalCharacters -1
+            $('#cantidad').html(totalCharacters)
 
             // BUSCAR EN AMBOS LISTADOS
 
@@ -181,34 +102,7 @@ var peopleController = function () {
             // BORRAR TR
             $(this).parent().parent().fadeOut('fast')
 
-
-            // CÖMO CONTABILIZAR Nº DE RESULTADOS GENERALES y RESTAR AL GUARDAR (¿?)
-            // function getAPIResults () {
-            //     count = data.count
-            //     return count
-            // }
-            // var count = getAPIResults()
-            // $('#cantidad').html((count - savedList.length) - 1)
         })
-
-
-
-        // BUSCAR EN ARRAY DE OBJETOS
-
-        function searchName (keyword, array) {
-            var index = -1
-
-            for (var i = 0; i < array.length; i++) {
-                var object = array[i]
-                var name = object.name
-
-                if (name.indexOf(keyword) !== -1) {
-                    index = i
-                    break
-                }
-            }
-            return index
-        }
 
     })
 

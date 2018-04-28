@@ -25,83 +25,9 @@ var localstorageController = function () {
         var character = savedList[i]
         var index = i + 1
 
-        switch (character.gender) {
-          case 'male':
-            character.gender = 'Hombre'
-            break
-          case 'female':
-            character.gender = 'Mujer'
-            break
-          case 'n/a':
-            character.gender = '-'
-            break
-        }
 
-        switch (character.mass) {
-          case 'unknown':
-            character.mass = '-'
-            break
-        }
-
-        switch (character.eye_color) {
-          case 'yellow':
-            character.eye_color = 'Amarillo'
-            break
-          case 'red':
-            character.eye_color = 'Rojo'
-            break
-          case 'blue':
-            character.eye_color = 'Azul'
-            break
-          case 'brown':
-            character.eye_color = 'Marrón'
-            break
-          case 'black':
-            character.eye_color = 'Negro'
-            break
-          case 'orange':
-            character.eye_color = 'Naranja'
-            break
-          case 'blue-gray':
-            character.eye_color = 'Griz azulado'
-            break
-          case 'hazel':
-            character.eye_color = 'Avellana'
-            break
-          case 'pink':
-            character.eye_color = 'Rosa'
-            break
-          case 'gold':
-            character.eye_color = 'Dorado'
-            break
-          case 'red, blue':
-            character.eye_color = 'Rojo, Azul'
-            break
-          case 'green, yellow':
-            character.eye_color = 'Verde, Amarillo'
-            break
-          case 'white':
-            character.eye_color = 'Blanco'
-            break
-          case 'dark':
-            character.eye_color = 'Oscuro'
-            break
-          case 'unknown':
-            character.eye_color = '-'
-            break
-        }
-
-        $('#tableBody').append(
-            '<tr>' +
-            '<th scope="row">' + index + '</th>' +
-            '<td class="name">' + character.name + '</td>' +
-            '<td>' + character.gender + '</td>' +
-            '<td>' + character.height + ' cm</td>' +
-            '<td>' + character.mass + ' kg</td>' +
-            '<td>' + character.eye_color + '</td>' +
-            '<td><button class="btn btn-danger btn-eliminar" type="button">Eliminar</button></td>' +
-            '</tr>'
-        )
+        // TRADUCIR Y ARMAR FILAS TABLA
+        createTable (savedList, character, index, 'eliminar')
       }
 
       // DATOS DE LA LISTA
@@ -130,25 +56,6 @@ var localstorageController = function () {
       $('#cantidad').html(count)
 
     })
-
-
-
-      // BUSCAR EN ARRAY DE OBJETOS
-
-      function searchName (keyword, array) {
-          var index = -1
-
-          for (var i = 0; i < array.length; i++) {
-              var object = array[i]
-              var name = object.name
-
-              if (name.indexOf(keyword) !== -1) {
-                  index = i
-                  break
-              }
-          }
-          return index
-      }
 
   })
 

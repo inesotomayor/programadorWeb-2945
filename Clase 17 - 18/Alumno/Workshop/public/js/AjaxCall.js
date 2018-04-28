@@ -6,19 +6,47 @@
 // })();
 
 var AjaxCall = (function () {
-  var exposed = {}
+    var exposed = {}
 
-  exposed.getData = function (url, callback) {
-    $.ajax(url)
-      .done(function (data) {
-        callback(null, data)
-        console.log('URL: ' + url)
-      })
-      .fail(function (error) {
-        callback(error)
-      })
-  }
+    // (*)
+    exposed.getData = function (url, callback) { // Callback: función que se ejecuta cuando recibe la info.
+        // Llamada ajax de jQuery
+        $.ajax(url)
+        // Si funciona:
+            .done(function (data) {
+                // Null en el primer parámetro y data en el segundo.
+                callback(null, data)
+                console.log('URL: ' + url)
+            })
+            // Si falla:
+            .fail(function (error) {
+                // Error en el primer parámetro y no hay data.
+                callback(error)
+            })
+    }
 
-  return exposed
+    // (*) Exposed es la función y se hace píblica para reutilizar por fuera.
+    return exposed
 
 })()
+
+
+// PEDIR TODA LA INFO DE UNA SÓLA VEZ
+
+// function getData (url) {
+//   $.ajax(url)
+//     .done(function (data) {
+//       if (data) {
+//         showStarshipsNames(data.results)
+//         if (data.next) {
+//           getData(data.next)
+//         } else {
+//           console.log('Termine de pedir data')
+//         }
+//       }
+//     })
+//     .fail(function (error) {
+//       callback(error)
+//       console.log('error', error)
+//     })
+// }
