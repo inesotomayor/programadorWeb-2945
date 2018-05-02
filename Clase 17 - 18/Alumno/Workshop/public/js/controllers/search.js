@@ -85,12 +85,13 @@ var searchController = function () {
 
         $(document).on('click', '.btn-guardar-encontrados', function() {
             var characterUrl = $(this).parent().attr('id')
+            var keyword = $(this).parent().parent().children('td.name').html()
 
             // BUSCAR EN AMBOS LISTADOS
 
             var index = searchUrl(characterUrl, searchList)
             console.log('Index general: ' + index)
-            var indexSaved = searchUrl(characterUrl, savedList)
+            var indexSaved = searchName(keyword, savedList)
             console.log('Index guardados: ' + indexSaved)
 
             if (indexSaved === -1) {
