@@ -2,7 +2,7 @@
 
 var btnType = ''
 
-function createTable (array, object, id, btn) {
+function createTable (array, object, id, btn, idBtn) {
 
     switch(btn) {
         case 'guardar':
@@ -95,7 +95,7 @@ function createTable (array, object, id, btn) {
         '<td>' + object.height + ' cm</td>' +
         '<td>' + object.mass + ' kg</td>' +
         '<td>' + object.eye_color + '</td>' +
-        '<td>' + btnType + '</td>' +
+        '<td id="' + idBtn + '">' + btnType + '</td>' +
         '</tr>'
     )
 }

@@ -8,13 +8,13 @@ var searchController = function () {
 
         // ARRAYS - TRAER DE LOCAL STORAGE O CREAR VACÍO Y GUARDARLO
         var charactersList = JSON.parse(localStorage.getItem('charactersList'))
-        if (charactersList == null) {
+        if (charactersList === null) {
             charactersList = []
             localStorage.setItem("charactersList", JSON.stringify(charactersList))
         }
 
         var savedList = JSON.parse(localStorage.getItem('savedList'))
-        if (savedList == null) {
+        if (savedList === null) {
             savedList = []
             localStorage.setItem("savedList", JSON.stringify(savedList))
         }
@@ -42,11 +42,13 @@ var searchController = function () {
                     '<span id="keyword"></span>"'
                 )
 
-
                 for (var i = 0; i < people.length; i++) {
                     var character = people[i]
-                    var keyword = character.name
+                    var characterUrl = character.url
                     var id = i + 1
+                    var idBtn = characterUrl.match(/\d+/)
+                    console.log('characterUrl: ' + characterUrl)
+
 
                     // AGREGAR A ARRAY GENERAL
                     searchList.push(character)
@@ -54,9 +56,8 @@ var searchController = function () {
                     // AGREGAR A LOCAL STORAGE
                     localStorage.setItem("searchList", JSON.stringify(searchList))
 
-
                     // TRADUCIR Y ARMAR FILAS TABLA
-                    createTable (charactersList, character, id, 'guardarBusqueda')
+                    createTable (searchList, character, id, 'guardarBusqueda', idBtn)
                 }
 
                 // HABILITAR BOTÓN DE VER MÁS
@@ -83,16 +84,16 @@ var searchController = function () {
         // AL CLICK REALIZAR BÚSQUEDA / GUARDAR / BORRAR FILA
 
         $(document).on('click', '.btn-guardar-encontrados', function() {
-            var keyword = $(this).parent().parent().children('td.name').html()
+            var characterUrl = $(this).parent().attr('id')
 
             // BUSCAR EN AMBOS LISTADOS
 
-            var index = searchName(keyword, searchList)
+            var index = searchUrl(characterUrl, searchList)
             console.log('Index general: ' + index)
-            var indexSaved = searchName(keyword, savedList)
+            var indexSaved = searchUrl(characterUrl, savedList)
             console.log('Index guardados: ' + indexSaved)
 
-            if (indexSaved == -1) {
+            if (indexSaved === -1) {
 
                 // GUARDAR EN ARRAY
                 savedList.push(searchList[index])

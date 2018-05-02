@@ -3,6 +3,7 @@ $(document).ready(function () {
     // Cargar la Home
 
     $('#root').load('../partials/home.html', homeController)
+    $('.nav-item:first-child .nav-link').addClass('active', 1000)
 
     // Al click, quitar .active del menú y ponerle al elemento clickeado
 

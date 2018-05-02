@@ -9,7 +9,7 @@ var peopleController = function () {
 
         // ARRAY GUARDADOS - TRAER DE LOCAL STORAGE O CREAR VACÍO Y GUARDARLO
         var savedList = JSON.parse(localStorage.getItem('savedList'))
-        if (savedList == null) {
+        if (savedList === null) {
             savedList = []
             localStorage.setItem("savedList", JSON.stringify(savedList))
         }
@@ -29,15 +29,17 @@ var peopleController = function () {
 
                 for (var i = 0; i < people.length; i++) {
                     var character = people[i]
-                    var keyword = character.name
+                    var characterUrl = character.url
 
                     // AGREGAR A ARRAY
                     charactersList.push(character)
+                    console.log(characterUrl)
 
                     // BUSCAR DUPLICADOS ENTRE LOS DOS ARRAYS
-                    var index = searchName(keyword, charactersList)
-                    var indexSaved = searchName(keyword, savedList)
+                    var index = searchUrl(characterUrl, charactersList)
+                    var indexSaved = searchUrl(characterUrl, savedList)
                     var id = index + 1
+                    var idBtn = characterUrl.match(/\d+/)
 
                     // SI ESTÁ DUPLICADO NO CARGARLO EN LA TABLA Y QUITAR DEL ARRAY GENERAL
                     if (indexSaved !== -1) {
@@ -50,7 +52,7 @@ var peopleController = function () {
                         localStorage.setItem("charactersList", JSON.stringify(charactersList))
 
                         // TRADUCIR Y ARMAR FILAS TABLA
-                        createTable (charactersList, character, id, 'guardar')
+                        createTable (charactersList, character, id, 'guardar', idBtn)
                     }
                 }
 
@@ -73,18 +75,18 @@ var peopleController = function () {
         // AL CLICK REALIZAR BÚSQUEDA / GUARDAR / BORRAR FILA
 
         $(document).on('click', '.btn-guardar', function() {
-            var keyword = $(this).parent().parent().children('td.name').html()
+            var characterUrl = $(this).parent().attr('id')
             totalCharacters = totalCharacters -1
             $('#cantidad').html(totalCharacters)
 
             // BUSCAR EN AMBOS LISTADOS
 
-            var index = searchName(keyword, charactersList)
+            var index = searchUrl(characterUrl, charactersList)
             console.log('Index general: ' + index)
-            var indexSaved = searchName(keyword, savedList)
+            var indexSaved = searchUrl(characterUrl, savedList)
             console.log('Index guardados: ' + indexSaved)
 
-            if (indexSaved == -1) {
+            if (indexSaved === -1) {
 
                 // GUARDAR EN ARRAY
                 savedList.push(charactersList[index])

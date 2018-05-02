@@ -5,7 +5,7 @@ var localstorageController = function () {
 
     // ARRAY GUARDADOS - TRAER DE LOCAL STORAGE O CREAR VACÍO Y GUARDARLO
     var savedList = JSON.parse(localStorage.getItem('savedList'))
-    if (savedList == null) {
+    if (savedList === null) {
       savedList = []
       localStorage.setItem("savedList", JSON.stringify(savedList))
     }
@@ -23,10 +23,13 @@ var localstorageController = function () {
 
       for (var i = 0; i < savedList.length; i++) {
         var character = savedList[i]
+        var characterUrl = character.url
+        var idBtn = characterUrl.match(/\d+/)
         var id = i + 1
 
+
         // TRADUCIR Y ARMAR FILAS TABLA
-        createTable (savedList, character, id, 'eliminar')
+        createTable (savedList, character, id, 'eliminar', idBtn)
       }
 
       // DATOS DE LA LISTA
@@ -40,10 +43,10 @@ var localstorageController = function () {
     // BORRAR AL CLICK
 
     $(document).on('click', '.btn-eliminar', function() {
-      var keyword = $(this).parent().parent().children('td.name').html()
+      var characterUrl = $(this).parent().attr('id')
 
       // BORRAR DEL ARRAY
-      var index = searchName(keyword, savedList)
+      var index = searchUrl(characterUrl, savedList)
       savedList.splice([index],1)
 
       // BORRAR DEL LOCAL STORAGE
