@@ -91,7 +91,7 @@ var searchController = function () {
 
             var index = searchUrl(characterUrl, searchList)
             console.log('Index general: ' + index)
-            var indexSaved = searchName(keyword, savedList)
+            var indexSaved = searchUrl(characterUrl, savedList)
             console.log('Index guardados: ' + indexSaved)
 
             if (indexSaved === -1) {
